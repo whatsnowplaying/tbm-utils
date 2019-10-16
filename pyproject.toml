@@ -19,7 +19,7 @@ homepage = "https://github.com/thebigmunch/tbm-utils"
 [tool.poetry.dependencies]
 python = "^3.6"
 
-attrs = ">=18.2,<19.3"
+attrs = ">=18.2,<19.4"
 pendulum = "^2.0"
 pprintpp = "0.*"
 wrapt = "^1.0"
