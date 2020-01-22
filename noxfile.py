@@ -1,9 +1,6 @@
-import os
 import shutil
 
 import nox
-
-ON_TRAVIS = 'TRAVIS' in os.environ
 
 py36 = '3.6'
 py37 = '3.7'
@@ -49,10 +46,6 @@ def test(session):
 
 @nox.session
 def report(session):
-	if ON_TRAVIS:
-		session.install('-U', 'codecov')
-		session.run('codecov')
-
 	session.install('-U', 'coverage[toml]')
 	session.run('coverage', 'report', '-m')
 	session.run('coverage', 'erase')

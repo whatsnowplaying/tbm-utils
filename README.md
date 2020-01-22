@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/tbm-utils.svg?label=PyPI)](https://pypi.org/project/tbm-utils/)
 ![](https://img.shields.io/badge/Python-3.6%2B-blue.svg)  
-[![Travis](https://img.shields.io/travis/thebigmunch/tbm-utils.svg?label=Travis)](https://travis-ci.org/thebigmunch/tbm-utils)
+[![GitHub CI](https://img.shields.io/github/workflow/status/thebigmunch/tbm-utils/CI?label=GitHub%20CI)](https://github.com/thebigmunch/tbm-utils/actions?query=workflow%3ACI)
 [![Codecov](https://img.shields.io/codecov/c/github/thebigmunch/tbm-utils.svg?label=Codecov)](https://codecov.io/gh/thebigmunch/tbm-utils)  
 [![Docs - Stable](https://img.shields.io/readthedocs/tbm-utils/stable.svg?label=Docs%20%28Stable%29)](https://tbm-utils.readthedocs.io/en/stable/)
 [![Docs - Latest](https://img.shields.io/readthedocs/tbm-utils/latest.svg?label=Docs%20%28Latest%29)](https://tbm-utils.readthedocs.io/en/latest/)
