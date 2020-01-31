@@ -10,8 +10,13 @@ import pprintpp
 
 
 class AttrMapping(MutableMapping):
-	def __init__(self, *args, **kwargs):
-		self.__dict__.update(*args, **kwargs)
+	def __init__(self, mapping=None, **kwargs):
+		if mapping:
+			for k, v in mapping.items():
+				self[k] = v
+
+		for k, v in kwargs.items():
+			self[k] = v
 
 	def __getattr__(self, attr):
 		try:

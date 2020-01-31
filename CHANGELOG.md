@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/1.0.0...master)
 
+### Changed
+
+* Init of ``AttrMapping`` to use ``__setitem__``.
 
 
 ## [1.0.0](https://github.com/thebigmunch/tbm-utils/releases/tag/1.0.0) (2019-10-10)
