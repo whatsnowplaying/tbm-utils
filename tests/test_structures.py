@@ -10,6 +10,7 @@ class AttrMappingMissing(AttrMapping):
 
 def test_AttrMapping():
 	attr_mapping = AttrMapping(key1='value1', key2='value2')
+	attr_mapping_mapping = AttrMapping({'key1': 'value1', 'key2': 'value2'})
 	attr_mapping_from_mapping = AttrMapping.from_mapping(
 		{
 			'key1': 'value1',
@@ -17,7 +18,7 @@ def test_AttrMapping():
 		}
 	)
 
-	assert attr_mapping == attr_mapping_from_mapping
+	assert attr_mapping == attr_mapping_mapping == attr_mapping_from_mapping
 
 	assert repr(attr_mapping) == "<AttrMapping ({'key1': 'value1', 'key2': 'value2'})>"
 	assert attr_mapping.__repr__(repr_dict={}) == '<AttrMapping ({})>'
