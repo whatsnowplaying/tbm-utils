@@ -14,7 +14,7 @@ __title__ = 'tbm_utils'
 __summary__ = 'A commonly-used set of utilities used by me (thebigmunch).'
 __url__ = 'https://github.com/thebigmunch/tbm_utils'
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 __version_info__ = tuple(int(i) for i in __version__.split('.') if i.isdigit())
 
 __author__ = 'thebigmunch'
