@@ -5,6 +5,7 @@ import pendulum
 import pytest
 
 from tbm_utils import (
+	Namespace,
 	create_parser_dry_run,
 	create_parser_filter_dates,
 	create_parser_local,
@@ -12,7 +13,8 @@ from tbm_utils import (
 	create_parser_meta,
 	create_parser_yes,
 	custom_path,
-	merge_defaults
+	merge_defaults,
+	parse_args,
 )
 
 
@@ -159,3 +161,8 @@ def test_merge_defaults():
 
 	assert merged.option1 == 'default'
 	assert merged.option2 == 'parsed'
+
+
+def test_parse_args():
+	assert parse_args(create_parser_dry_run()) == Namespace()
+	assert parse_args(create_parser_dry_run(), ['-n']) == Namespace(dry_run=True)

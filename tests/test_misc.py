@@ -1,67 +1,191 @@
 from pathlib import Path
 
-# import pendulum
+import pendulum
 
-from tbm_utils import get_filepaths
-
+from tbm_utils import (
+	filter_filepaths_by_dates,
+	get_filepaths,
+)
 
 TEST_DIR = Path(__file__).parent / 'files'
+TEST_DIR.mkdir(exist_ok=True)
+for path in TEST_DIR.iterdir():
+	path.unlink()
+
+for name in [
+	'test_file.1',
+	'test_file.2',
+	'test_file.3',
+	'test_file.4',
+	'test_file.5',
+]:
+	(TEST_DIR / name).touch()
+
 TEST_FILEPATHS = list(TEST_DIR.iterdir())
 
-# Y2000 = pendulum.period(
-# 	pendulum.datetime(2000, 1, 1).start_of('day'),
-# 	pendulum.datetime(2000, 12, 31).end_of('day')
-# )
-# Y2019 = pendulum.period(
-# 	pendulum.datetime(2019, 1, 1).start_of('day'),
-# 	pendulum.datetime(2019, 12, 31).end_of('day')
-# )
-# Y2019AUG = pendulum.period(
-# 	pendulum.datetime(2019, 8, 1).start_of('day'),
-# 	pendulum.datetime(2019, 8, 31).end_of('day')
-# )
+THIS = pendulum.now()
+LAST = THIS.start_of('year').previous(pendulum.MONDAY)
+
+THIS_YEAR = pendulum.period(
+	THIS.start_of('year'),
+	THIS.end_of('year'),
+)
+
+TODAY = pendulum.period(
+	THIS.start_of('day'),
+	THIS.end_of('day'),
+)
+
+YESTERDAY = pendulum.period(
+	THIS.subtract(days=1).start_of('day'),
+	THIS.subtract(days=1).end_of('day'),
+)
+
+LAST_YEAR = pendulum.period(
+	LAST.start_of('year'),
+	LAST.end_of('year'),
+)
 
 
 # TODO: More test situations.
-# TODO: Need to figure a workaround or mock for this.
-# def test_filter_filepaths_by_dates():
-# 	assert list(filter_filepaths_by_dates(TEST_FILEPATHS)) == TEST_FILEPATHS
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			created_in=Y2000
-# 		)
-# 	) == [TEST_DIR / 'test_file.1']
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			modified_in=Y2000
-# 		)
-# 	) == [TEST_DIR / 'test_file.1']
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			created_in=Y2019
-# 		)
-# 	) == TEST_FILEPATHS[1:]
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			modified_in=Y2019
-# 		)
-# 	) == TEST_FILEPATHS[1:]
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			created_in=Y2019AUG
-# 		)
-# 	) == TEST_FILEPATHS[1:]
-# 	assert list(
-# 		filter_filepaths_by_dates(
-# 			TEST_FILEPATHS,
-# 			modified_in=Y2019AUG
-# 		)
-# 	) == TEST_FILEPATHS[1:]
+def test_filter_filepaths_by_dates():
+	assert list(filter_filepaths_by_dates(TEST_FILEPATHS)) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_in=LAST_YEAR
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_in=THIS_YEAR
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_on=YESTERDAY
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_on=TODAY
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_before=pendulum.period(
+				pendulum.DateTime.min,
+				THIS.start_of('day'),
+			)
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_before=pendulum.period(
+				pendulum.DateTime.min,
+				THIS.add(days=1),
+			)
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_after=pendulum.period(
+				THIS.add(days=1),
+				pendulum.DateTime.max,
+			)
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			created_after=pendulum.period(
+				THIS.start_of('day'),
+				pendulum.DateTime.max,
+			)
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_in=LAST_YEAR
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_in=THIS_YEAR
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_on=YESTERDAY
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_on=TODAY
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_before=pendulum.period(
+				pendulum.DateTime.min,
+				THIS.start_of('day'),
+			)
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_before=pendulum.period(
+				pendulum.DateTime.min,
+				THIS.add(days=1),
+			)
+		)
+	) == TEST_FILEPATHS
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_after=pendulum.period(
+				THIS.add(days=1),
+				pendulum.DateTime.max,
+			)
+		)
+	) == []
+
+	assert list(
+		filter_filepaths_by_dates(
+			TEST_FILEPATHS,
+			modified_after=pendulum.period(
+				THIS.start_of('day'),
+				pendulum.DateTime.max,
+			)
+		)
+	) == TEST_FILEPATHS
 
 
 def test_get_filepaths():

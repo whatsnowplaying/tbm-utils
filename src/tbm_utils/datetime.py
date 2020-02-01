@@ -50,7 +50,7 @@ def _convert_to_int(value):
 	return value
 
 
-@attrs(slots=True, frozen=True, kw_only=True)
+@attrs(slots=True, frozen=True, kw_only=True)  # pragma: nocover
 class ParsedDateTime:
 	year = attrib(converter=_convert_to_int)
 	month = attrib(converter=_convert_to_int)

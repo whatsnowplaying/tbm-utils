@@ -70,3 +70,6 @@ target/
 # poetry
 poetry.lock
 
+# Test Files
+tests/files
+
