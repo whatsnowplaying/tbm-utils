@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/1.1.0...master)
 
+### Fixed
+
+* Old code in ``get_defaults`` missed in prior edit pass.
+
 
 ## [1.1.0](https://github.com/thebigmunch/tbm-utils/releases/tag/1.1.0) (2020-02-01)
 

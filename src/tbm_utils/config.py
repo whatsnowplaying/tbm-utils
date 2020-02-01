@@ -24,8 +24,7 @@ def get_defaults(command, config, *, command_keys=None, command_aliases=None):
 	defaults = AttrMapping()
 
 	if config_defaults:
-		if command_keys is None:
-			command_keys = {}
+		command_keys = command_keys or set()
 
 		defaults.update(
 			(k, v)
@@ -36,7 +35,7 @@ def get_defaults(command, config, *, command_keys=None, command_aliases=None):
 		if command in config_defaults:
 			defaults.update(
 				(k, v)
-				for k, v in config_defaults[command[0]].items()
+				for k, v in config_defaults[command].items()
 				if k not in command_keys
 			)
 
