@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/1.1.1...master)
 
+### Changed
+
+* API for ``filter_filepaths_by_dates``.
+
 
 ## [1.1.1](https://github.com/thebigmunch/tbm-utils/releases/tag/1.1.1) (2020-02-01)
 

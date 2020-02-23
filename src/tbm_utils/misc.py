@@ -17,14 +17,8 @@ from .decorators import cast_to_list
 def filter_filepaths_by_dates(
 	filepaths,
 	*,
-	created_in=None,
-	created_on=None,
-	created_before=None,
-	created_after=None,
-	modified_in=None,
-	modified_on=None,
-	modified_before=None,
-	modified_after=None
+	creation_dates=None,
+	modification_dates=None,
 ):
 	def _match_created_date(filepaths, period):
 		for filepath in filepaths:
@@ -50,22 +44,12 @@ def filter_filepaths_by_dates(
 			if pendulum.from_timestamp(modified_timestamp) in period:
 				yield filepath
 
-	for period in [
-		created_in,
-		created_on,
-		created_before,
-		created_after,
-	]:
-		if period is not None:
+	if creation_dates:
+		for period in creation_dates:
 			filepaths = _match_created_date(filepaths, period)
 
-	for period in [
-		modified_in,
-		modified_on,
-		modified_before,
-		modified_after,
-	]:
-		if period is not None:
+	if modification_dates:
+		for period in modification_dates:
 			filepaths = _match_modified_date(filepaths, period)
 
 	return filepaths
