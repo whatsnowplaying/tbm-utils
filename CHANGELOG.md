@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.0.1...master)
 
+## Fixed
+
+* Add missing dependency.
+
 
 ## [2.0.1](https://github.com/thebigmunch/tbm-utils/releases/tag/2.0.1) (2020-02-23)
 
