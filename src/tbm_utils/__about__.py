@@ -7,18 +7,25 @@ __all__ = [
 	'__title__',
 	'__url__',
 	'__version__',
-	'__version_info__'
+	'__version_info__',
 ]
 
-__title__ = 'tbm_utils'
-__summary__ = 'A commonly-used set of utilities used by me (thebigmunch).'
-__url__ = 'https://github.com/thebigmunch/tbm_utils'
+try:
+	from importlib.metadata import metadata
+except ImportError:
+	from importlib_metadata import metadata
 
-__version__ = '1.1.1'
+meta = metadata('tbm-utils')
+
+__title__ = meta['Name']
+__summary__ = meta['Summary']
+__url__ = meta['Home-page']
+
+__version__ = meta['Version']
 __version_info__ = tuple(int(i) for i in __version__.split('.') if i.isdigit())
 
-__author__ = 'thebigmunch'
-__author_email__ = 'mail@thebigmunch.me'
+__author__ = meta['Author']
+__author_email__ = meta['Author-email']
 
-__license__ = 'MIT'
+__license__ = meta['License']
 __copyright__ = f'2019-2020 {__author__} <{__author_email__}>'
