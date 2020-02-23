@@ -13,7 +13,6 @@ import pendulum
 from .decorators import cast_to_list
 
 
-@cast_to_list(0)
 def filter_filepaths_by_dates(
 	filepaths,
 	*,

@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.0.0...master)
 
+### Removed
+
+* ``cast_to_list`` decorator from ``filter_filepaths_by_dates``.
+
 
 ## [2.0.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.0.0) (2020-02-23)
 
