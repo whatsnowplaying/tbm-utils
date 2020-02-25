@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.0.2...master)
 
+
+## [2.2.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.2.0) (2020-02-25)
+
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.1.0...2.2.0)
+
 ### Added
 
 * Ability for ``DataReader`` to read bits.
