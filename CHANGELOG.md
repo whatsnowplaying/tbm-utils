@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org).
 ### Added
 
 * ``DataReader`` class.
+* ``datareader`` decorator.
+
 
 ## [2.0.2](https://github.com/thebigmunch/tbm-utils/releases/tag/2.0.2) (2020-02-23)
 
