@@ -6,7 +6,11 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased](https://github.com/thebigmunch/tbm-utils/tree/master)
 
-[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.0.2...master)
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.2.0...master)
+
+### Fixed
+
+* Add missing attributes in ``DataReader.__init__``.
 
 
 ## [2.2.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.2.0) (2020-02-25)

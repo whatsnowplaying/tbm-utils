@@ -38,6 +38,9 @@ class DataReader(BufferedReader):
 
 		super().__init__(data, buffer_size=buffer_size)
 
+		self.accumulator = 0
+		self.bit_count = 0
+
 	def peek(self, size=DEFAULT_BUFFER_SIZE):
 		if size > DEFAULT_BUFFER_SIZE:
 			size = DEFAULT_BUFFER_SIZE
