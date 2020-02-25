@@ -5,7 +5,7 @@ build-backend = "poetry.masonry.api"
 [tool.poetry]
 name = "tbm-utils"
 description = "A commonly-used set of utilities used by me (thebigmunch)."
-version = "2.0.2"
+version = "2.1.0"
 
 license = "MIT"
 
