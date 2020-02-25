@@ -53,6 +53,13 @@ Humanize
 	:members:
 
 
+IO
+--
+
+.. automodule:: tbm_utils.io
+	:members:
+
+
 Misc
 ----
 

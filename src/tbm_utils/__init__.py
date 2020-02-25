@@ -4,6 +4,7 @@ from .config import *
 from .datetime import *
 from .decorators import *
 from .humanize import *
+from .io import *
 from .misc import *
 from .path import *
 from .structures import *
@@ -16,6 +17,7 @@ __all__ = [
 	*datetime.__all__,
 	*decorators.__all__,
 	*humanize.__all__,
+	*io.__all__,
 	*misc.__all__,
 	*path.__all__,
 	*structures.__all__

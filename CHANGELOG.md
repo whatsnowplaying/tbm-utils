@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.0.2...master)
 
+### Added
+
+* ``DataReader`` class.
 
 ## [2.0.2](https://github.com/thebigmunch/tbm-utils/releases/tag/2.0.2) (2020-02-23)
 
