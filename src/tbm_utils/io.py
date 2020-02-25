@@ -49,3 +49,33 @@ class DataReader(BufferedReader):
 			self.seek(-len(peeked), os.SEEK_CUR)
 
 		return peeked
+
+	def read(self, size=-1):
+		self.accumulator = 0
+		self.bit_count = 0
+
+		return super().read(size)
+
+	# From https://rosettacode.org/wiki/Bitwise_IO#Python
+	def _readbit(self):
+		if not self.bit_count:
+			a = self.read(1)
+
+			if a:  # pragma: nobranch
+				self.accumulator = ord(a)
+
+			self.bit_count = 8
+
+		rv = (self.accumulator & (1 << self.bit_count - 1)) >> self.bit_count - 1
+
+		self.bit_count -= 1
+
+		return rv
+
+	def readbits(self, n):
+		v = 0
+		while n > 0:
+			v = (v << 1) | self._readbit()
+			n -= 1
+
+		return v
