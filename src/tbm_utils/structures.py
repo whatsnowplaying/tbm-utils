@@ -56,7 +56,7 @@ class AttrMapping(MutableMapping):
 
 	def __repr__(self, repr_dict=None):
 		repr_dict = repr_dict if repr_dict is not None else self.__dict__
-		return f"<{self.__class__.__name__} ({pprintpp.pformat(repr_dict)})>"
+		return f"<{self.__class__.__name__}({pprintpp.pformat(repr_dict)})>"
 
 	@classmethod
 	def from_mapping(cls, mapping):
