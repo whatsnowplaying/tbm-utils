@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](https://semver.org).
 ### Added
 
 * Support singular and plural item labels for ``LabelList``.
+* Custom items, keys, and values methods and views for ``AttrMapping``.
 
 
 ## [2.2.1](https://github.com/thebigmunch/tbm-utils/releases/tag/2.2.1) (2020-02-25)

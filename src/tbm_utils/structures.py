@@ -4,9 +4,34 @@ __all__ = [
 ]
 
 from collections import UserList
-from collections.abc import MutableMapping
+from collections.abc import (
+	ItemsView,
+	KeysView,
+	MutableMapping,
+	ValuesView,
+)
 
 import pprintpp
+
+
+class _KeysView(KeysView):
+	def __repr__(self):
+		return f"KeysView({pprintpp.pformat([key for key in self._mapping])})"
+
+
+class _ItemsView(ItemsView):
+	def __repr__(self):
+		items = [
+			(key, self._mapping[key])
+			for key in self._mapping
+		]
+
+		return f"ItemsView({pprintpp.pformat(items)})"
+
+
+class _ValuesView(ValuesView):
+	def __repr__(self):
+		return f"ValuesView({pprintpp.pformat([self._mapping[key] for key in self._mapping])})"
 
 
 class AttrMapping(MutableMapping):
@@ -61,6 +86,15 @@ class AttrMapping(MutableMapping):
 	@classmethod
 	def from_mapping(cls, mapping):
 		return cls(**mapping)
+
+	def items(self):
+		return _ItemsView(self)
+
+	def keys(self):
+		return _KeysView(self)
+
+	def values(self):
+		return _ValuesView(self)
 
 
 class LabelList(UserList):
