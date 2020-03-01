@@ -16,7 +16,7 @@ import pprintpp
 
 class _KeysView(KeysView):
 	def __repr__(self):
-		return f"KeysView({pprintpp.pformat([key for key in self._mapping])})"
+		return f"KeysView({pprintpp.pformat([key for key in self._mapping])})"  # noqa
 
 
 class _ItemsView(ItemsView):
