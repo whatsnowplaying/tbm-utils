@@ -1,6 +1,6 @@
 __all__ = [
 	'AttrMapping',
-	'LabelList'
+	'LabelList',
 ]
 
 from collections import UserList
@@ -64,10 +64,11 @@ class AttrMapping(MutableMapping):
 
 
 class LabelList(UserList):
-	item_label = 'items'
+	item_label = ('item', 'items')
 
 	def __repr__(self):
-		return f"<{self.__class__.__name__} ({len(self)} {self.item_label})>"
+		item_label = self.item_label[1] if len(self.data) > 1 else self.item_label[0]
+		return f"<{self.__class__.__name__} ({len(self)} {item_label})>"
 
 	@property
 	def items(self):
