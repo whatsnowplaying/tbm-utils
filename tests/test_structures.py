@@ -20,8 +20,8 @@ def test_AttrMapping():
 
 	assert attr_mapping == attr_mapping_mapping == attr_mapping_from_mapping
 
-	assert repr(attr_mapping) == "<AttrMapping ({'key1': 'value1', 'key2': 'value2'})>"
-	assert attr_mapping.__repr__(repr_dict={}) == '<AttrMapping ({})>'
+	assert repr(attr_mapping) == "<AttrMapping({'key1': 'value1', 'key2': 'value2'})>"
+	assert attr_mapping.__repr__(repr_dict={}) == '<AttrMapping({})>'
 
 	assert list(attr_mapping.items()) == [('key1', 'value1'), ('key2', 'value2')]
 	assert list(attr_mapping.keys()) == ['key1', 'key2']
@@ -61,5 +61,9 @@ def test_LabelList():
 	assert list_mixin.items == ['item1', 'item2']
 	assert repr(list_mixin) == '<LabelList (2 items)>'
 
-	list_mixin.item_label = 'test items'
+	list_mixin.item_label = ('test item', 'test items')
 	assert repr(list_mixin) == '<LabelList (2 test items)>'
+
+	del list_mixin[1]
+
+	assert repr(list_mixin) == '<LabelList (1 test item)>'
