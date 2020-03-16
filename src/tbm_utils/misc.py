@@ -54,7 +54,7 @@ def filter_filepaths_by_dates(
 	return filepaths
 
 
-@cast_to_list(0)
+@cast_to_list
 def get_filepaths(
 	paths,
 	*,

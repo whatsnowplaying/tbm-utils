@@ -10,8 +10,11 @@ import wrapt
 from .io import DataReader
 
 
-def cast_to_list(position):
+def cast_to_list(wrapped=None, *, position=0):
 	"""Cast the positional argument at given position into a list if not already a list."""
+
+	if wrapped is None:  # pragma: nocover
+		return functools.partial(cast_to_list, position=position)
 
 	@wrapt.decorator
 	def wrapper(wrapped, instance, args, kwargs):
@@ -22,7 +25,7 @@ def cast_to_list(position):
 
 		return wrapped(*args, **kwargs)
 
-	return wrapper
+	return wrapper(wrapped)
 
 
 def datareader(wrapped=None, *, position=0):

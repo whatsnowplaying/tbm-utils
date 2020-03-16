@@ -5,12 +5,12 @@ from tbm_utils import (
 )
 
 
-@cast_to_list(0)
+@cast_to_list
 def cast_func_1(arg0):
 	return arg0
 
 
-@cast_to_list(1)
+@cast_to_list(position=1)
 def cast_func_2(arg0, arg1):
 	return arg0, arg1
 

@@ -9,6 +9,12 @@ This project adheres to [Semantic Versioning](https://semver.org).
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.3.0...master)
 
 
+### Changed
+
+* Make ``position`` parameter for ``cast_to_list`` an optional kwarg.
+	It defaults to casting the first argument if not given.
+
+
 ## [2.3.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.3.0) (2020-03-01)
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.2.1...2.3.0)
