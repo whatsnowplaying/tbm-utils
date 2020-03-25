@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org).
 ### Added
 
 * ``FILEPATH_CHARACTER_REPLACEMENTS``.
+* ``DataWriter``.
 
 
 ## [2.4.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.4.0) (2020-03-16)

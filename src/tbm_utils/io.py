@@ -1,11 +1,14 @@
 __all__ = [
 	'DataReader',
+	'DataWriter',
 ]
 
 import os
 from io import (
 	DEFAULT_BUFFER_SIZE,
+	BufferedRandom,
 	BufferedReader,
+	BufferedWriter,
 	BytesIO,
 	FileIO,
 )
@@ -17,7 +20,7 @@ class DataReader(BufferedReader):
 	It includes support for filepaths, file-like objects, and bytes-like objects.
 
 	Parameters:
-		data (DataReader, BufferedReader, os.PathLike, str, bytes, bytearray, memoryview):
+		data (DataReader, BufferedIOBase, os.PathLike, str, bytes, bytearray, memoryview):
 			The object to provide the :class:`BufferedReader` interface for.
 		buffer_size(int): The size of the internal buffer. (Default: io.DEFAULT_BUFFER_SIZE)
 	"""
@@ -26,7 +29,7 @@ class DataReader(BufferedReader):
 		data,
 		buffer_size=DEFAULT_BUFFER_SIZE,
 	):
-		if isinstance(data, (BufferedReader, DataReader)):
+		if isinstance(data, (BufferedReader, BufferedRandom)):
 			if isinstance(data.raw, FileIO):
 				data = FileIO(data.name, 'rb')
 			else:
@@ -82,3 +85,32 @@ class DataReader(BufferedReader):
 			n -= 1
 
 		return v
+
+
+class DataWriter(BufferedWriter):
+	"""A buffered writer wrapper.
+
+	It includes support for filepaths, file-like objects, and bytes-like objects.
+
+	Parameters:
+		data (DataReader, BufferedIOBase, os.PathLike, str, bytes, bytearray, memoryview):
+			The object to provide the :class:`BufferedWriter` interface for.
+		buffer_size(int): The size of the internal buffer. (Default: io.DEFAULT_BUFFER_SIZE)
+	"""
+
+	def __init__(
+		self,
+		data,
+		buffer_size=DEFAULT_BUFFER_SIZE,
+	):
+		if isinstance(data, (BufferedWriter, BufferedRandom)):
+			if isinstance(data.raw, FileIO):
+				data = FileIO(data.name, 'wb')
+			else:
+				data = BytesIO(data.read())
+		elif isinstance(data, (os.PathLike, str)):
+			data = FileIO(data, 'wb')
+		elif isinstance(data, (bytearray, bytes, memoryview)):
+			data = BytesIO(data)
+
+		super().__init__(data, buffer_size=buffer_size)
