@@ -8,10 +8,14 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.4.0...master)
 
+### Added
+
+* ``FILEPATH_CHARACTER_REPLACEMENTS``.
+
 
 ## [2.4.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.4.0) (2020-03-16)
 
-[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.2.1...2.3.0)
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.3.0...2.4.0)
 
 ### Changed
 

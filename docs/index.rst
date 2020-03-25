@@ -32,6 +32,13 @@ Config
 	:members:
 
 
+Constants
+---------
+
+.. automodule:: tbm_utils.constants
+	:members:
+
+
 Datetime
 --------
 
