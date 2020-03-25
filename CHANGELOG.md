@@ -6,7 +6,12 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased](https://github.com/thebigmunch/tbm-utils/tree/master)
 
-[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.4.0...master)
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.0...master)
+
+
+## [2.5.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.5.0) (2020-03-25)
+
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.4.0...2.5.0)
 
 ### Added
 
