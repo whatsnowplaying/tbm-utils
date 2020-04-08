@@ -6,7 +6,16 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased](https://github.com/thebigmunch/tbm-utils/tree/master)
 
-[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.0...master)
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.1...master)
+
+
+## [2.5.1](https://github.com/thebigmunch/tbm-utils/releases/tag/2.5.1) (2020-04-08)
+
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.0...2.5.1)
+
+### Changed
+
+* Work around pendulum build issue.
 
 
 ## [2.5.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.5.0) (2020-03-25)
