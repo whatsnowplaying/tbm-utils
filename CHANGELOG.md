@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.1...master)
 
+### Changed
+
+* Don't call into ``__*item__`` methods from ``__*attr__`` methods in ``AttrMapping``.
+	This allows for cleaner exception tracebacks.
+
 
 ## [2.5.1](https://github.com/thebigmunch/tbm-utils/releases/tag/2.5.1) (2020-04-08)
 

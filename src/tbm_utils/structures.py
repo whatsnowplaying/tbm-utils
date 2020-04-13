@@ -14,12 +14,12 @@ from collections.abc import (
 import pprintpp
 
 
-class _KeysView(KeysView):
+class _KeysView(KeysView):  # pragma: nocover
 	def __repr__(self):
-		return f"KeysView({pprintpp.pformat([key for key in self._mapping])})"  # noqa
+		return f"KeysView({pprintpp.pformat(list(self._mapping))})"
 
 
-class _ItemsView(ItemsView):
+class _ItemsView(ItemsView):  # pragma: nocover
 	def __repr__(self):
 		items = [
 			(key, self._mapping[key])
@@ -29,7 +29,7 @@ class _ItemsView(ItemsView):
 		return f"ItemsView({pprintpp.pformat(items)})"
 
 
-class _ValuesView(ValuesView):
+class _ValuesView(ValuesView):  # pragma: nocover
 	def __repr__(self):
 		return f"ValuesView({pprintpp.pformat([self._mapping[key] for key in self._mapping])})"
 
@@ -44,19 +44,19 @@ class AttrMapping(MutableMapping):
 			self[k] = v
 
 	def __getattr__(self, attr):
-		try:
-			return self.__getitem__(attr)
-		except KeyError:
-			raise AttributeError(attr) from None
+		if attr not in self.__dict__:
+			raise AttributeError(attr)
+
+		return self.__dict__[attr]  # pragma: nocover
 
 	def __setattr__(self, attr, value):
-		self.__setitem__(attr, value)
+		self.__dict__[attr] = value
 
 	def __delattr__(self, attr):
-		try:
-			return self.__delitem__(attr)
-		except KeyError:
-			raise AttributeError(attr) from None
+		if attr not in self.__dict__:
+			raise AttributeError(attr)
+
+		del self.__dict__[attr]
 
 	def __getitem__(self, key):
 		if key in self.__dict__:
