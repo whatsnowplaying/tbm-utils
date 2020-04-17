@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 * Don't call into ``__*item__`` methods from ``__*attr__`` methods in ``AttrMapping``.
 	This allows for cleaner exception tracebacks.
+* Explicitly support ``BytesIO`` and ``FileIO`` objects in ``DataReader``.
 
 
 ## [2.5.1](https://github.com/thebigmunch/tbm-utils/releases/tag/2.5.1) (2020-04-08)

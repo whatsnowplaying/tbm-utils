@@ -34,6 +34,10 @@ class DataReader(BufferedReader):
 				data = FileIO(data.name, 'rb')
 			else:
 				data = BytesIO(data.read())
+		elif isinstance(data, BytesIO):
+			data = BytesIO(data.getvalue())
+		elif isinstance(data, FileIO):
+			data = FileIO(data.name, 'rb')
 		elif isinstance(data, (os.PathLike, str)):
 			data = FileIO(data, 'rb')
 		elif isinstance(data, (bytearray, bytes, memoryview)):
@@ -108,6 +112,10 @@ class DataWriter(BufferedWriter):
 				data = FileIO(data.name, 'wb')
 			else:
 				data = BytesIO(data.read())
+		elif isinstance(data, BytesIO):
+			data = BytesIO(data.getvalue())
+		elif isinstance(data, FileIO):
+			data = FileIO(data.name, 'wb')
 		elif isinstance(data, (os.PathLike, str)):
 			data = FileIO(data, 'wb')
 		elif isinstance(data, (bytearray, bytes, memoryview)):
