@@ -103,6 +103,73 @@ class DataReader(BufferedReader):
 		except ValueError:
 			return -1
 
+	def index(self, sub, start=None, end=None):
+		orig_position = self.tell()
+
+		if start is None:
+			start = 0
+
+		if end is None:
+			self.seek(0, os.SEEK_END)
+			end = self.tell()
+
+		self.seek(start, os.SEEK_SET)
+
+		while self.tell() < end:
+			peeked = self.peek()
+			try:
+				i = peeked.index(sub)
+			except ValueError:
+				self.seek(len(peeked), os.SEEK_CUR)
+			else:
+				index = i + self.tell()
+				self.seek(orig_position, os.SEEK_SET)
+				break
+		else:
+			self.seek(orig_position, os.SEEK_SET)
+
+			raise ValueError("Subsequence not found.")
+
+		return index
+
+	def rindex(self, sub, start=None, end=None):
+		orig_position = self.tell()
+
+		if start is None:
+			start = 0
+
+		if end is None:
+			self.seek(0, os.SEEK_END)
+			end = self.tell()
+
+		if end < DEFAULT_BUFFER_SIZE:
+			step = end
+			self.seek(0, os.SEEK_SET)
+		else:
+			step = DEFAULT_BUFFER_SIZE
+			self.seek(-step, os.SEEK_END)
+
+		read = 0
+		while read < end:
+			peeked = self.peek(step)
+			read += len(peeked)
+
+			try:
+				i = peeked.rindex(sub)
+			except ValueError:
+				self.seek(-len(peeked), os.SEEK_CUR)
+			else:
+				index = i + self.tell()
+				self.seek(orig_position, os.SEEK_SET)
+				break
+		else:
+			self.seek(orig_position, os.SEEK_SET)
+
+			raise ValueError("Subsequence not found.")
+
+		return index
+
+
 class DataWriter(BufferedWriter):
 	"""A buffered writer wrapper.
 
