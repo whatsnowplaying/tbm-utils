@@ -24,6 +24,7 @@ class DataReader(BufferedReader):
 			The object to provide the :class:`BufferedReader` interface for.
 		buffer_size(int): The size of the internal buffer. (Default: io.DEFAULT_BUFFER_SIZE)
 	"""
+
 	def __init__(
 		self,
 		data,
@@ -90,6 +91,17 @@ class DataReader(BufferedReader):
 
 		return v
 
+	def find(self, sub, start=None, end=None):
+		try:
+			return self.index(sub, start, end)
+		except ValueError:
+			return -1
+
+	def rfind(self, sub, start=None, end=None):
+		try:
+			return self.rindex(sub, start, end)
+		except ValueError:
+			return -1
 
 class DataWriter(BufferedWriter):
 	"""A buffered writer wrapper.

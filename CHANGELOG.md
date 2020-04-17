@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](https://semver.org).
 
 [Commits](https://github.com/thebigmunch/tbm-utils/compare/2.5.1...master)
 
+### Added
+
+* ``DataReader.find``.
+* ``DataReader.rfind``.
+
 ### Changed
 
 * Don't call into ``__*item__`` methods from ``__*attr__`` methods in ``AttrMapping``.
