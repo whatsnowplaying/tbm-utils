@@ -14,6 +14,9 @@ This project adheres to [Semantic Versioning](https://semver.org).
 * ``DataReader.rfind``.
 * ``DataReader.index``.
 * ``DataReader.rindex``.
+* ``DataReader.seek_first``.
+* ``DataReader.seek_last``.
+* ``DataReader.seek_next``.
 
 ### Changed
 

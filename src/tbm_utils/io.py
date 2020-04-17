@@ -169,6 +169,38 @@ class DataReader(BufferedReader):
 
 		return index
 
+	def seek_first(self, sub):
+		"""Seek to the first index of a subsequence in data."""
+
+		self.seek(0, os.SEEK_SET)
+
+		try:
+			index = self.index(sub, start=0)
+		except ValueError:
+			raise
+		else:
+			self.seek(index, os.SEEK_SET)
+
+	def seek_last(self, sub):
+		"""Seek to the last index of a subsequence in data."""
+
+		try:
+			index = self.rindex(sub)
+		except ValueError:
+			raise
+		else:
+			self.seek(index, os.SEEK_SET)
+
+	def seek_next(self, sub):
+		"""Seek to the next index of a subsequence in data."""
+
+		try:
+			index = self.index(sub, self.tell())
+		except ValueError:
+			raise
+		else:
+			self.seek(index, os.SEEK_SET)
+
 
 class DataWriter(BufferedWriter):
 	"""A buffered writer wrapper.
