@@ -108,7 +108,7 @@ def datetime_string_to_time_period(
 	if in_:
 		if parsed.day:
 			raise ValueError(
-				f"Datetime string must contain only year or year/month for 'in' option."
+				"Datetime string must contain only year or year/month for 'in' option."
 			)
 		start = pendulum.datetime(
 			parsed.year,
@@ -132,7 +132,7 @@ def datetime_string_to_time_period(
 			or parsed.hour
 		):
 			raise ValueError(
-				f"Datetime string must contain only year, month, and day for 'on' option."
+				"Datetime string must contain only year, month, and day for 'on' option."
 			)
 
 		dt = pendulum.datetime(
