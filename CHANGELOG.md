@@ -4,9 +4,9 @@ Notable changes to this project based on the [Keep a Changelog](https://keepacha
 This project adheres to [Semantic Versioning](https://semver.org).
 
 
-## [Unreleased](https://github.com/thebigmunch/tbm-utils/tree/master)
+## [Unreleased](https://github.com/thebigmunch/tbm-utils/tree/main)
 
-[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.6.0...master)
+[Commits](https://github.com/thebigmunch/tbm-utils/compare/2.6.0...main)
 
 
 ## [2.6.0](https://github.com/thebigmunch/tbm-utils/releases/tag/2.6.0) (2020-05-01)
