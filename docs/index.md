@@ -1,88 +1,95 @@
-=========
-tbm-utils
-=========
+# tbm-utils
 
 tbm-utils is a commonly-used set of utilities used by me (thebigmunch).
 
 
-Getting Started
+## Getting Started
 ===============
 
 Install tbm-utils with `pip <https://pip.pypa.io/en/stable/>`_.
 
-.. code-block:: console
+``` shell
+$ pip install -U tbm-utils
+```
 
-	$ pip install -U tbm-utils
 
+## API Reference
 
-API Reference
-=============
+### CLI
 
-CLI
----
-
+```{eval-rst}
 .. automodule:: tbm_utils.cli
 	:members:
+```
 
 
-Config
-------
+### Config
 
+```{eval-rst}
 .. automodule:: tbm_utils.config
 	:members:
+```
 
 
-Constants
----------
+### Constants
 
+```{eval-rst}
 .. automodule:: tbm_utils.constants
 	:members:
+```
 
 
-Datetime
---------
+### Datetime
 
+```{eval-rst}
 .. automodule:: tbm_utils.datetime
 	:members:
+```
 
 
-Decorators
-----------
+### Decorators
 
+```{eval-rst}
 .. automodule:: tbm_utils.decorators
 	:members:
+```
 
 
-Humanize
---------
+### Humanize
 
+```{eval-rst}
 .. automodule:: tbm_utils.humanize
 	:members:
+```
 
 
-IO
---
+### IO
 
+```{eval-rst}
 .. automodule:: tbm_utils.io
 	:members:
+```
 
 
-Misc
-----
+### Misc
 
+```{eval-rst}
 .. automodule:: tbm_utils.misc
 	:members:
+```
 
 
-Path
-----
+### Path
 
+```{eval-rst}
 .. automodule:: tbm_utils.path
 	:members:
+```
 
 
-Structures
-----------
+### Structures
 
+```{eval-rst}
 .. automodule:: tbm_utils.structures
 	:members:
+```
