@@ -72,9 +72,5 @@ def humanize_sample_rate(sample_rate, *, system='decimal'):
 	divisor, symbol = _get_symbol(sample_rate, system)
 	value = sample_rate / divisor
 
-	if value.is_integer():
-		humanized = f'{int(value)} {symbol}Hz'
-	else:
-		humanized = f'{value:.1f} {symbol}Hz'
-
-	return humanized
+	return (f'{int(value)} {symbol}Hz'
+	        if value.is_integer() else f'{value:.1f} {symbol}Hz')

@@ -51,12 +51,12 @@ LAST_YEAR = pendulum.period(
 def test_filter_filepaths_by_dates():
 	assert list(filter_filepaths_by_dates(TEST_FILEPATHS)) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[LAST_YEAR]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -65,12 +65,12 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[YESTERDAY]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -79,7 +79,7 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
@@ -89,7 +89,7 @@ def test_filter_filepaths_by_dates():
 				)
 			]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -103,7 +103,7 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
@@ -113,7 +113,7 @@ def test_filter_filepaths_by_dates():
 				)
 			]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -127,12 +127,12 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[LAST_YEAR]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -141,12 +141,12 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[YESTERDAY]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -155,7 +155,7 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
@@ -165,7 +165,7 @@ def test_filter_filepaths_by_dates():
 				)
 			]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -179,7 +179,7 @@ def test_filter_filepaths_by_dates():
 		)
 	) == TEST_FILEPATHS
 
-	assert list(
+	assert not list(
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
@@ -189,7 +189,7 @@ def test_filter_filepaths_by_dates():
 				)
 			]
 		)
-	) == []
+	)
 
 	assert list(
 		filter_filepaths_by_dates(
@@ -210,8 +210,8 @@ def test_get_filepaths():
 	assert list(get_filepaths([str(TEST_DIR)])) == TEST_FILEPATHS
 	assert list(get_filepaths(TEST_DIR / 'test_file.1')) == [TEST_DIR / 'test_file.1']
 
-	assert list(get_filepaths(TEST_FILEPATHS, exclude_paths=['test_file'])) == []
-	assert list(get_filepaths(TEST_FILEPATHS, exclude_regexes=['test_.*'])) == []
-	assert list(get_filepaths(TEST_DIR, exclude_paths=['test_file'])) == []
-	assert list(get_filepaths(TEST_DIR, exclude_regexes=['test_.*'])) == []
-	assert list(get_filepaths(TEST_DIR, exclude_globs=['test_*.*'])) == []
+	assert not list(get_filepaths(TEST_FILEPATHS, exclude_paths=['test_file']))
+	assert not list(get_filepaths(TEST_FILEPATHS, exclude_regexes=['test_.*']))
+	assert not list(get_filepaths(TEST_DIR, exclude_paths=['test_file']))
+	assert not list(get_filepaths(TEST_DIR, exclude_regexes=['test_.*']))
+	assert not list(get_filepaths(TEST_DIR, exclude_globs=['test_*.*']))

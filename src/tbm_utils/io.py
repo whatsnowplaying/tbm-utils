@@ -70,9 +70,7 @@ class DataReader(BufferedReader):
 	# From https://rosettacode.org/wiki/Bitwise_IO#Python
 	def _readbit(self):
 		if not self.bit_count:
-			a = self.read(1)
-
-			if a:  # pragma: nobranch
+			if a := self.read(1):
 				self.accumulator = ord(a)
 
 			self.bit_count = 8

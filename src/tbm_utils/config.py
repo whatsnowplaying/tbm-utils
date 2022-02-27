@@ -9,14 +9,13 @@ from .structures import AttrMapping
 
 
 def convert_default_keys(item):
-	if isinstance(item, Mapping):
-		converted = item.__class__()
-		for k, v in item.items():
-			converted[k.lstrip('-').replace('-', '_')] = convert_default_keys(v)
-
-		return converted
-	else:
+	if not isinstance(item, Mapping):
 		return item
+	converted = item.__class__()
+	for k, v in item.items():
+		converted[k.lstrip('-').replace('-', '_')] = convert_default_keys(v)
+
+	return converted
 
 
 def get_defaults(command, config, *, command_keys=None, command_aliases=None):

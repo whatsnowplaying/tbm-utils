@@ -117,12 +117,8 @@ def datetime_string_to_time_period(
 			tz=parsed_tz
 		)
 
-		if parsed.month:
-			end = start.end_of('month')
-		else:
-			end = start.end_of('year')
-
-		period = pendulum.period(start, end)
+		end = start.end_of('month') if parsed.month else start.end_of('year')
+		return pendulum.period(start, end)
 	elif on:
 		if (
 			not all(
@@ -142,7 +138,7 @@ def datetime_string_to_time_period(
 			tz=parsed_tz
 		)
 
-		period = pendulum.period(dt.start_of('day'), dt.end_of('day'))
+		return pendulum.period(dt.start_of('day'), dt.end_of('day'))
 	elif before:
 		start = DateTime.min
 
@@ -168,7 +164,7 @@ def datetime_string_to_time_period(
 		elif parsed.second is None:
 			dt = dt.start_of('minute')
 
-		period = pendulum.period(start, dt)
+		return pendulum.period(start, dt)
 	else:
 		end = DateTime.max
 
@@ -194,6 +190,4 @@ def datetime_string_to_time_period(
 		elif parsed.second is None:
 			dt = dt.start_of('minute')
 
-		period = pendulum.period(dt, end)
-
-	return period
+		return pendulum.period(dt, end)
